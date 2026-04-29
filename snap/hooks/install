@@ -1,0 +1,17 @@
+#!/bin/sh
+
+# 1. Try to blindly guess the most likely keyboard (the first one that says 'kbd')
+GUESS_NODE=$(grep -E 'Handlers=' /proc/bus/input/devices | grep 'kbd' | head -n 1 | grep -Eo 'event[0-9]+')
+if [ -n "$GUESS_NODE" ]; then
+    snapctl set keyboard="/dev/input/$GUESS_NODE"
+else
+    snapctl set keyboard="/dev/input/event3"
+fi
+
+# 2. Set a default browser
+snapctl set browser="firefox"
+
+# 3. Set root as the placeholder user (since we can't reliably guess the SUDO_USER in a background hook)
+snapctl set user="root"
+
+exit 0

@@ -1,0 +1,23 @@
+name: linkedin-shortcut
+base: core24
+version: '1.1'
+summary: A customizable LinkedIn shortcut daemon.
+description: |
+  A background daemon that listens for a shortcut and launches LinkedIn.
+  Configure the keyboard and browser using 'snap set'.
+
+grade: stable
+confinement: classic
+
+apps:
+  daemon:
+    command: bin/run-daemon.sh
+    daemon: simple
+    restart-condition: always
+  setup:
+    command: bin/setup.sh
+
+parts:
+  build-daemon:
+    plugin: make
+    source: .

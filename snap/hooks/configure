@@ -1,0 +1,3 @@
+#!/bin/sh
+# This dummy hook tells Snap that we accept configuration variables.
+exit 0

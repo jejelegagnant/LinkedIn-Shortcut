@@ -1,0 +1,11 @@
+# Snapcraft build artifacts
+parts/
+prime/
+stage/
+*.snap
+
+# Secrets (IMPORTANT)
+snapcraft.login
+
+# C Build files
+linkedin_daemon

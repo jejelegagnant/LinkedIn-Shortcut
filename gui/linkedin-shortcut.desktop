@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=LinkedIn Shortcut Agent
+Exec=linkedin-shortcut.agent
+Terminal=false
+NoDisplay=true

@@ -1,11 +1,9 @@
-#!/bin/sh
+#!/bin/bash
+KBD_PATH=$(snapctl get keyboard)
 
-KBD=$(snapctl get keyboard)
-BROWSER=$(snapctl get browser)
-TARGET_USER=$(snapctl get user)
+if [ -z "$KBD_PATH" ]; then
+    echo "Unconfigured."
+    exit 1
+fi
 
-[ -z "$KBD" ] && KBD="/dev/input/event0"
-[ -z "$BROWSER" ] && BROWSER="firefox"
-[ -z "$TARGET_USER" ] && TARGET_USER="root"
-
-exec $SNAP/bin/linkedin_daemon -k "$KBD" -b "$BROWSER" -u "$TARGET_USER"
+exec $SNAP/bin/daemon -k "$KBD_PATH"
